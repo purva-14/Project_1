@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Flip a Coin Game</h1>
+    <h4>Press the coin or the button to flip the coin</h4>
+
+    <img class="coin" src="image/heads.svg" alt="">
+    <p id="result"></p>
+
+    <button class="btn">Random</button>
+
+    <script>
+
+        const coin=document.querySelector(".coin");
+        const button=document.querySelector(".btn");
+        const resultText=document.querySelector("#result");
+
+
+
+       button.addEventListener("click",()=>{
+
+        coin.classList.add("flip");
+        button.ariaDisabled=true;
+        resultText.textContent="Flipping..."
+
+        setTimeout(()=>{
+ const result=Math.random()<0.5?"Heads":"Tails";
+        resultText.textContent=result;
+       if(result=="Heads"){
+        coin.src="image/heads.svg"
+       }else{
+        coin.src="image/tails.svg"
+       }
+
+       coin.classList.remove("flip");
+       button.ariaDisabled=false;
+        },600)
+       
+      
+         });
+    </script>
+</body>
+</html>
